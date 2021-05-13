@@ -1,2 +1,2 @@
-class Pais:
+class Ciudad:
     nombre = ''
