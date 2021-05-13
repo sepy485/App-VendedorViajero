@@ -1,11 +1,15 @@
 import numpy as np
-N = 4
+N = 0
 ciudades = 'C1'
 print('Bienvenido al algoritmo del viajero! \n')
-N = int(input("Ingrese el número de ciudades a recorrer: "))
+
+while(N < 4 or N%2 != 0):
+    N = int(input("Ingrese el número de ciudades a recorrer: "))
+    if(N<4 or N%2 != 0):
+        print("N debe ser mayor o igual a 4 y un número par!")
 print('Ciudades: ')
 for i in range(N-1):
-  ciudades = (ciudades + ', C' + str(i+1))
+  ciudades = (ciudades + ', C' + str(i+2))
 print(ciudades)
 print(' \n')
 print('Distancia de ciudades')
