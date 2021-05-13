@@ -11,7 +11,7 @@ print('Distancia de ciudades')
 matriz = np.random.randint(99, size=(N, N)) + 1
 print(matriz)
 print(' \n')
-#Función que le asigna 0 a la distancia de una ciudad a sí misma
+#Función que le asigna 0 a la distancia de una ciudad a sí misma (diagonal de ceros)
 for x in range(N):
   for y in range(N):
     if(x == y):
