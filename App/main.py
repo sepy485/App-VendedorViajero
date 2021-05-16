@@ -10,7 +10,7 @@ while(N < 4 or N%2 != 0):
         print("N debe ser mayor o igual a 4 y un número par!")
 print('Ciudades: ')
 for i in range(N-1):
-  ciudadesp = (ciudades + ', C' + str(i+2))
+  ciudadesp = (ciudadesp + ', C' + str(i+2))
 print(ciudadesp)
 print(' \n')
 print('Distancia de ciudades')
@@ -28,6 +28,25 @@ for x in range(N):
 print(matriz)
 print(' \n')
 
-def algoritmoDFS(listaCiudades, matrizDistancias):
-  nodo1 = NodoCiudad()
-algoritmoDFS()
+#Función que retorna la distancia entre 2 ciudades
+def calcularDistancia(ciudad1, ciudad2, matriz):
+  distancia = (matriz[ciudad1][ciudad2])
+  return distancia
+      
+print(str(calcularDistancia(0,3,matriz)))
+
+def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
+  nodo1 = listaCiudades[0] #toma cualquier ciudad para iniciar, en este caso la primera
+  nodo1.setVisitado(True)
+  listaConectados = nodo1.getConectados() #toma las ciudades conectadas
+  i = 0
+  while((listaConectados[i].getVisitado) and (i < len(listaConectados))):
+    i = i+1
+  #Si se llegó al final de la lista finaliza  
+  if(i == N):
+    resultado = resultado + "."
+  #Si no ha terminado con la lista
+  else:
+    nodo2 = listaConectados[i]
+    resultado = nodo1.getNombre() + " => " + str(calcularDistancia(nodo1,nodo2,matriz)) + algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
+  return resultado
