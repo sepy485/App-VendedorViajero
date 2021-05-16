@@ -44,9 +44,9 @@ def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
     i = i+1
   #Si se llegó al final de la lista finaliza  
   if(i == N):
-    resultado = resultado + "."
+    resultado = resultado + " Fin."
   #Si no ha terminado con la lista
   else:
     nodo2 = listaConectados[i]
-    resultado = nodo1.getNombre() + " => " + str(calcularDistancia(nodo1,nodo2,matriz)) + algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
+    resultado = nodo1.getNombre() + " => " + str(calcularDistancia(nodo1,nodo2,matriz)) + " => " algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
   return resultado
