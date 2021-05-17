@@ -1,4 +1,5 @@
 import numpy as np
+import time
 N = 0
 ciudades = ["C1"]
 ciudadesp = 'C1'
@@ -45,8 +46,11 @@ def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   #Si se llegó al final de la lista finaliza  
   if(i == N):
     resultado = resultado + " Fin."
+    print("El resultado es: " + str(resultado))
+    print("Tiempo transcurrido: " + str(time.process_time())) + " [sg]"
   #Si no ha terminado con la lista
   else:
     nodo2 = listaConectados[i]
     resultado = nodo1.getNombre() + " => " + str(calcularDistancia(nodo1,nodo2,matriz)) + " => " + algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
   return resultado
+
