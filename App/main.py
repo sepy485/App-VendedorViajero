@@ -38,6 +38,8 @@ print(str(calcularDistancia(0,3,matriz)))
 
 print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
 
+
+
 def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   nodo1 = listaCiudades[0] #toma cualquier ciudad para iniciar, en este caso la primera
   nodo1.setVisitado(True)
