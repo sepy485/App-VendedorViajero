@@ -5,7 +5,8 @@ import time
 #Variables
 N = 0 #Cantidad de ciudades INPUT
 listaCiudades = []
-
+#Generamos una matriz de números aleatorios entre 1 y 100 para simular las distancias
+matriz = np.random.randint(99, size=(N, N)) + 1
 
 #Inicio del programa
 print('Bienvenido al algoritmo del viajero! \n')
@@ -20,9 +21,6 @@ for i in range(N):
   listaCiudades.append(Ciudad(i,nombre))
 
 print(' \n')
-
-#Generamos una matriz de números aleatorios entre 1 y 100 para simular las distancias
-matriz = np.random.randint(99, size=(N, N)) + 1
 
 #Función que le asigna 0 a la distancia de una ciudad a sí misma (diagonal de ceros)
 for x in range(N):
