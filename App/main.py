@@ -36,6 +36,8 @@ def calcularDistancia(ciudad1, ciudad2, matriz):
       
 print(str(calcularDistancia(0,3,matriz)))
 
+print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
+
 def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   nodo1 = listaCiudades[0] #toma cualquier ciudad para iniciar, en este caso la primera
   nodo1.setVisitado(True)
@@ -47,7 +49,7 @@ def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   if(i == N):
     resultado = resultado + " Fin."
     print("El resultado es: " + str(resultado))
-    print("Tiempo transcurrido: " + str(time.process_time())) + " [sg]"
+    print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
   #Si no ha terminado con la lista
   else:
     nodo2 = listaConectados[i]
