@@ -1,19 +1,24 @@
 import numpy as np
+from Ciudad import Ciudad
 import time
 N = 0
-ciudades = ["C1"]
-ciudadesp = 'C1'
+
 print('Bienvenido al algoritmo del viajero! \n')
+listaCiudades = []
 
 while(N < 4 or N%2 != 0):
     N = int(input("Ingrese el número de ciudades a recorrer: "))
     if(N<4 or N%2 != 0):
         print("N debe ser mayor o igual a 4 y un número par!")
+        
+        
 print('Ciudades: ')
-for i in range(N-1):
-  ciudadesp = (ciudadesp + ', C' + str(i+2))
-print(ciudadesp)
+for i in range(N):
+  nombre = 'C' + str(i)
+  listaCiudades.append(Ciudad(i,nombre))
+
 print(' \n')
+
 print('Distancia de ciudades')
 matriz = np.random.randint(99, size=(N, N)) + 1
 
@@ -40,21 +45,27 @@ print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
 
 
 
+
+
+
 def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   nodo1 = listaCiudades[0] #toma cualquier ciudad para iniciar, en este caso la primera
   nodo1.setVisitado(True)
-  listaConectados = nodo1.getConectados() #toma las ciudades conectadas
-  i = 0
-  while((listaConectados[i].getVisitado) and (i < len(listaConectados))):
-    i = i+1
+  listaConectados = listaCiudades #toma las ciudades conectadas
+  listaConectados.pop(0)
+  i = len(listaConectados)
+ 
   #Si se llegó al final de la lista finaliza  
-  if(i == N):
+  if(i <= 0):
     resultado = resultado + " Fin."
     print("El resultado es: " + str(resultado))
     print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
+    return resultado
   #Si no ha terminado con la lista
   else:
-    nodo2 = listaConectados[i]
-    resultado = nodo1.getNombre() + " => " + str(calcularDistancia(nodo1,nodo2,matriz)) + " => " + algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
-  return resultado
+    nodo2 = listaConectados[0]
+    resultado = resultado + nodo1.getNombre() + " => " + str(calcularDistancia(nodo1.getNumero(),nodo2.getNumero(),matriz)) + " => "
+    algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
+    return resultado
 
+algoritmoDFS(listaCiudades, matriz, N, '')
