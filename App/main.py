@@ -1,37 +1,6 @@
 import numpy as np
 from Ciudad import Ciudad
-import time
-
-#Variables
-N = 0 #Cantidad de ciudades INPUT
-listaCiudades = []
-#Generamos una matriz de números aleatorios entre 1 y 100 para simular las distancias
-matriz = np.random.randint(99, size=(N, N)) + 1
-
-#Inicio del programa
-print('Bienvenido al algoritmo del viajero! \n')
-while(N < 4 or N%2 != 0):
-    N = int(input("Ingrese el número de ciudades a recorrer: "))
-    if(N<4 or N%2 != 0):
-        print("N debe ser mayor o igual a 4 y un número par!")
-        
-#Rellena una lista con las ciudades
-for i in range(N):
-  nombre = 'C' + str(i)
-  listaCiudades.append(Ciudad(i,nombre))
-
-print(' \n')
-
-#Función que le asigna 0 a la distancia de una ciudad a sí misma (diagonal de ceros)
-for x in range(N):
-  for y in range(N):
-    if(x == y):
-      matriz[x][y] = 0
-      
-#Muestra la matriz de distancias entre ciudades
-print('Distancia de ciudades')
-print(matriz)
-print(' \n')
+from time import time
 
 #Función que retorna la distancia entre 2 ciudades
 def calcularDistancia(ciudad1, ciudad2, matriz):
@@ -50,14 +19,44 @@ def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   if(i <= 0):
     resultado = resultado + " Fin."
     print("El resultado es: " + str(resultado))
-    print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
+    #print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
     return resultado
   #Si no ha terminado con la lista entonces continúa
   else:
     nodo2 = listaConectados[0]
-    resultado = resultado + nodo1.getNombre() + " => " + str(calcularDistancia(nodo1.getNumero(),nodo2.getNumero(),matriz)) + " => "
+    resultado = resultado + nodo1.getNombre() + " => " + str(calcularDistancia(nodo1.getNumero(),nodo2.getNumero(),matrizDistancias)) + " => "
     algoritmoDFS(listaConectados, matrizDistancias, N, resultado)
     return resultado
 
-#Se ejecuta el algoritmo
-algoritmoDFS(listaCiudades, matriz, N, '')
+#Función que se encarga de ejecutar todo el proceso del programa
+def funcionMain(N):
+  new_n = N
+  while new_n%2!=0 or new_n<4:
+    new_n = int(input("Favor ingrese  un valor par mayor o igual a 4 y que sea PAR: "))
+  start_time= time()
+  print(start_time)
+  listaCiudadesAux = []
+  #Rellena una lista con las ciudades
+  for i in range(new_n):
+    nombre = 'C' + str(i+1)
+    listaCiudadesAux.append(Ciudad(i,nombre))
+
+  #Generamos una matriz de números aleatorios entre 1 y 100 para simular las distancias
+  matriz = np.random.randint(99, size=(new_n, new_n)) + 1
+
+  #Función que le asigna 0 a la distancia de una ciudad a sí misma (diagonal de ceros)
+  for x in range(new_n):
+    for y in range(new_n):
+      if(x == y):
+        matriz[x][y] = 0
+  
+  algoritmoDFS(listaCiudadesAux, matriz, new_n, '')
+  elapsed_time = time()
+  print(elapsed_time)
+  dif = elapsed_time-start_time
+  print(dif)
+
+#Inicio y bienvenida formal del programa  
+print('Bienvenido al algoritmo del viajero! \n')
+N = int(input("Ingrese el número de ciudades a recorrer: "))
+funcionMain(int(N))
