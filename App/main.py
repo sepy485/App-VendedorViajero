@@ -1,6 +1,7 @@
 import numpy as np
 from Ciudad import Ciudad
 from time import time
+import time
 
 #Función que retorna la distancia entre 2 ciudades
 def calcularDistancia(ciudad1, ciudad2, matriz):
@@ -16,6 +17,7 @@ def algoritmoDFS(listaCiudades, matrizDistancias, N, resultado):
   i = len(listaConectados)
  
   #Si se llegó al final de la lista finaliza  
+
   if(i <= 0):
     resultado = resultado + " Fin."
     print("El resultado es: " + str(resultado))
@@ -33,7 +35,7 @@ def funcionMain(N):
   new_n = N
   while new_n%2!=0 or new_n<4:
     new_n = int(input("Favor ingrese  un valor par mayor o igual a 4 y que sea PAR: "))
-  start_time= time()
+  #start_time= time()
   #print(start_time)
   listaCiudadesAux = []
   #Rellena una lista con las ciudades
@@ -51,10 +53,11 @@ def funcionMain(N):
         matriz[x][y] = 0
   
   algoritmoDFS(listaCiudadesAux, matriz, new_n, '')
-  elapsed_time = time()
+  #elapsed_time = time()
   #print(elapsed_time)
-  dif = elapsed_time-start_time
-  print(dif)
+  #dif = elapsed_time-start_time
+  #print(dif)
+  print("Tiempo transcurrido: " + str(time.process_time()) + " [sg]")
 
 #Inicio y bienvenida formal del programa  
 print('Bienvenido al algoritmo del viajero! \n')
