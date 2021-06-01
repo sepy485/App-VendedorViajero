@@ -61,5 +61,5 @@ def funcionMain(N):
 
 #Inicio y bienvenida formal del programa  
 print('Bienvenido al algoritmo del viajero! \n')
-N = int(input("Ingrese el número de ciudades a recorrer: "))
+N = int(input("Ingrese el número de ciudades sa recorrer: "))
 funcionMain(int(N))
