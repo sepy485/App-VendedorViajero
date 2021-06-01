@@ -53,7 +53,7 @@ def funcionMain(N):
   algoritmoDFS(listaCiudadesAux, matriz, new_n, '')
   elapsed_time = time()
   #print(elapsed_time)
-  dif = elapsed_time-start_time
+  dif = float(elapsed_time-start_time)
   print(dif)
 
 #Inicio y bienvenida formal del programa  
