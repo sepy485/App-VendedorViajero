@@ -34,7 +34,7 @@ def funcionMain(N):
   while new_n%2!=0 or new_n<4:
     new_n = int(input("Favor ingrese  un valor par mayor o igual a 4 y que sea PAR: "))
   start_time= time()
-  print(start_time)
+  #print(start_time)
   listaCiudadesAux = []
   #Rellena una lista con las ciudades
   for i in range(new_n):
@@ -52,7 +52,7 @@ def funcionMain(N):
   
   algoritmoDFS(listaCiudadesAux, matriz, new_n, '')
   elapsed_time = time()
-  print(elapsed_time)
+  #print(elapsed_time)
   dif = elapsed_time-start_time
   print(dif)
 
